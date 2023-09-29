@@ -1,0 +1,1 @@
+class Sms {func @main():void {io.@writeInt(Shape.@numOfShape);}var length, width: int; func @fact(n: int):int{ if n == 0 {return 1;} else {return n * @fact(n - 1);}}}

@@ -8,75 +8,103 @@ options {
     language = Python3;
 }
 
+
 program: (classdecl)+ EOF;
 
-classdecl: CLASS classname (supperclass)? LB (classmember|construcdecl)* RB;
+classdecl: CLASS classname (supperclass)? LB (classmember)* RB;
 
 supperclass: EXTENDS classname;
 
 classname: ID;
 
-construcdecl: FUNC CONSTRUCTOR paramdecl body;
+construcdecl: FUNC CONSTRUCTOR paramdecl block_stmt;
 
-classmember: (attributedecl | methoddecl) SM;
+classmember: attributedecl SM | methoddecl | construcdecl;
 
-attributedecl: (CONST | VAR) attributelist COLON mctype (initlist)?
-{
-    (3 == len(initlist))
-};
+// attributedecl: (CONST | VAR) attribute=attributelist COLON mctype (init=initlist)?
+// {
+//     print(type($attributelist.text))  # Assuming $attributelist.text contains "a,b,c,d"
+    
+// };
 
-// attributedecl: (CONST | VAR) attributelist COLON mctype (initlist)?;
+attributedecl: (CONST | VAR) attributelist COLON mctype (EQ initlist){len($attributelist.text.split(',')) == len($initlist.text.split(','))}?
+	| (CONST | VAR) attributelist COLON mctype;
 
 // attributedecl: (CONST | VAR) attributelist COLON mctype (initlist)?
 //     { (attributelist is None and initlist is None) or (attributelist.size() == len(initlist))};
 
-attributelist: membername (CM membername)*;
+initlist: expr (CM expr)*;
 
-initlist: EQ expr (CM expr)*;
-
-methoddecl: FUNC membername paramdecl COLON mctype body;
+methoddecl: FUNC membername paramdecl COLON mctype block_stmt;
 
 paramdecl: LP paramlist? RP;
 
 paramlist: param (CM param)*;
 
-param: membername COLON mctype;
-
-body: LB bodydecl* RB;
-
-bodydecl: 'body';
-
-mctype: (INT | FLOAT);
-
-membername: ('@')? ID;
-
-
-
-
-// attributedecl: mctype idlist SM;
-// idlist: ID CM idlist | ID;
-// mctype: INT | FLOAT;
-// methoddecl: mctype ID paramdecl body;
-// paramdecl: LP paramlist* RP;
-// paramlist: param SM paramlist| param;
-// param: mctype idlist;
+param: attributelist COLON mctype; // When two or more consecutive named function parameters share a common type
 
 // body: LB bodydecl* RB;
-// bodydecls: bodydecl bodydecls | ;
-// bodydecl: attributedecl | statement;
 
-// statement: (assign_stmt|call_stmt|return_stmt) SM;
-// assign_stmt: ID EQ expr;
-call_stmt: ID LP exprlist RP;
-exprlist: nonNULL_exprlist| ;
-nonNULL_exprlist: expr CM nonNULL_exprlist | expr;
-// return_stmt: RETURN expr;
+// bodydecl: 'body';
 
-expr: exp1 ADD expr | exp1;
-exp1: exp2 SUB exp2 | exp2;
-exp2: exp2 (DIV | MUL ) exp3 | exp3;
-exp3: operands;
-operands: INTLIT | FLOATLIT | ID | call_stmt | LP expr RP;
+mctype: INT | FLOAT | BOOL | STRING | VOID  | classname | ARRAY;
+
+ARRAY: OB INTLIT CB (INT | FLOAT | BOOL | STRING | ID);
+
+attributelist: membername (CM membername)*;
+
+membername: AC? ID;
+
+
+
+expr: expr1 (LESS | GREATER | LESSEQUAL | GREATEREQUAL) expr1 | expr1;
+expr1: expr2 (EQUAL | NOTEQUAL) expr2 | expr2;
+expr2: expr2 (AND | OR) expr3 | expr3;
+expr3: expr3 ( ADD | SUB) expr4 | expr4;
+expr4: expr4 (MUL | DIV | MOD | BS) expr5 | expr5;
+expr5: expr5 (CONCATENATION) expr6 | expr6;
+expr6: NOT expr6 | expr7;
+expr7: ( ADD | SUB) expr7 | expr8;
+expr8: expr9 OB expr CB | expr9;
+// member_access: expr DOT ID | ID DOT ID | expr DOT ID LB (list_of_expr)? RB | ID DOT ID LB
+// (list_of_expr)? RB;
+expr9:
+	expr9 DOT ID 
+	| expr9 DOT membername (LP list_of_expr? RP)?
+	| (membername DOT)? membername (LP list_of_expr? RP)? SM?
+	| expr10;
+expr10: NEW ID LP (list_of_expr)? RP expr10? | expr11;
+expr11: LP expr RP | ID | literal | SELF DOT ID | NULL;
+
+list_of_expr: expr (CM expr)*;
+
+literal: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT | ARRAYLIT;
+
+
+statement: 
+	attributedecl
+	| assign_stmt SM
+	| if_stmt
+	| for_stmt
+	| break_stmt
+	| continue_stmt
+	| return_stmt
+	| method_stm
+	| block_stmt;
+
+block_stmt: LB member_block RB;
+member_block: (attributedecl SM | statement)*;
+assign_stmt: (ID | expr8) ASSIGN expr;
+if_stmt: IF block_stmt? expr block_stmt (ELSE block_stmt)?;
+for_stmt: FOR assign_stmt SM expr SM assign_stmt block_stmt;
+break_stmt: BREAK SM;
+continue_stmt: CONTINUE SM;
+return_stmt: RETURN expr? SM;
+method_stm: (ID | expr ) DOT membername LP list_of_expr? RP SM | expr9;
+// io: 'io' DOT (WRITE | WRITELN) LP expr RP SM;
+// WRITE: '@write';
+// WRITELN: '@writeInt';
+
 
 CLASS: 'c' L A S S;
 RETURN: 'r' E T U R N;
@@ -102,8 +130,9 @@ NEW: 'n' E W;
 
 
 
-
-
+AC: '@';
+OB : '[';
+CB: ']';
 EQ: '=';
 LB: '{';
 RB: '}';
@@ -115,6 +144,7 @@ DOT: '.';
 ADD: '+';
 SUB: '-';
 DIV: '/';
+BS: '\\';
 MOD: '%';
 NOT: '!';
 OR: '||';
@@ -126,20 +156,40 @@ GREATER: '>';
 LESSEQUAL: '<=';
 GREATEREQUAL: '>=';
 ASSIGN: ':=';
-EXP: '^';
+CONCATENATION: '^';
 MUL: '*';
 COLON: ':';
 EXTENDS: '<-';
 
+
+ARRAYLIT: OB (ARRAY_ELEMENT (CM ARRAY_ELEMENT)*)? CB;
+ARRAY_ELEMENT: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT;
+
 FLOATLIT
-    : DIGIT+ DOT (DIGIT | EXPONENT)* // 1 | 1.5 | 1.e-4
-    | DIGIT* DOT DIGIT+ EXPONENT? // (1).5(e-4)
-    | DIGIT+ EXPONENT // 12e-5
+    : '-'? DIGIT+ DOT (DIGIT | EXPONENT)* // 1 | 1.5 | 1.e-4
+    | '-'? DIGIT+ DOT DIGIT+ EXPONENT? // (1).5(e-4)
+    | '-'? DIGIT+ EXPONENT // 12e-5
     ;
 INTLIT : DIGIT+ ;
+BOOLLIT: TRUE | FALSE;
 
-fragment EXPONENT: [eE] [-]? DIGIT+ ;
+STRING_LITERAL: '"' STR_CHAR* '"'
+	{
+		y = str(self.text)
+		self.text = y[1:-1]
+	}
+	;
+
+
+fragment EXPONENT: [eE] [-+]? DIGIT+ ;
 fragment DIGIT: [0-9] ;
+
+
+// Define a token for line comments
+LineComment: '//' ~[\r\n]* -> skip;
+
+// Define a token for block comments
+BlockComment: '/*' ( ~[*/] | '*/' ~'/' | BlockComment )* '*/' -> skip;
 
 ID: [_a-zA-Z][_a-zA-Z0-9]*;
 
@@ -156,9 +206,31 @@ BLOCK_COMMENT: '/*' .*? '*/' -> skip;
 
 ERROR_CHAR: . {raise ErrorToken(self.text)};
 
-UNCLOSE_STRING: .;
-ILLEGAL_ESCAPE: .;
+UNCLOSE_STRING: '"' STR_CHAR* ( [\b\t\n\f\r"\\] | EOF ) 
+	{
+		y = str(self.text)
+		possible = ['\b', '\t', '\n', '\f', '\r', '"', '\\']
+		if y[-1] in possible:
+			raise UncloseString(y[1:-1])
+		else:
+			raise UncloseString(y[1:])
+	}
+	;
 
+
+ILLEGAL_ESCAPE: '"' STR_CHAR* ESC_ILLEGAL
+	{
+		y = str(self.text)
+		raise IllegalEscape(y[1:])
+	}
+	;
+
+
+fragment STR_CHAR: ~[\b\t\n\f\r"\\] | ESC_SEQ ;
+
+fragment ESC_SEQ: '\\' [btnfr"\\] ;
+
+fragment ESC_ILLEGAL: '\\' ~[btnfr"\\] | ~'\\' ;
 
 fragment A: [aA];
 fragment B: [bB];
