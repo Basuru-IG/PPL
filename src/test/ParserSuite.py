@@ -90,7 +90,7 @@ class ParserSuite(unittest.TestCase):
         self.assertTrue(TestParser.test(input, expect, 212))
 
     def test_3(self):
-        input = """class SS { var x: int = 65;}"""
+        input = """class SS { var x: int =           65 ;}"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 213))
         
@@ -100,7 +100,7 @@ class ParserSuite(unittest.TestCase):
         self.assertTrue(TestParser.test(input, expect, 214))
     
     def test_5(self):
-        input = """class Ss {func @fact(n: int):int{ if n == [3.0,3,12.3e-1] {return 1;} else {return n * @fact(n - 1);}}}"""
+        input = """class Ss {func @fact(n: int):int{ if n == [3.0, 3, 12.3e-1] {return 1;} else {return n * @fact(n - 1);}}}"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 215))
         
@@ -110,7 +110,8 @@ class ParserSuite(unittest.TestCase):
         self.assertTrue(TestParser.test(input, expect, 216))
 
     def test_7(self):
-        input = """class aSs {var length, width: int; func @fact(n: int):int{ if n == 0 {return 1;} else {return n * @fact(n - 1);}}}"""
+        input = """class aSs {var length, width: int; func @fact  (          n: int):int{            if n == 0 {return 1;          } else {return 
+        n * @fact(n - 1);}}}"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 217))
         
@@ -142,3 +143,15 @@ class ParserSuite(unittest.TestCase):
         input = """class Program2 { var x: int = new X(); func @fact(n: int):int{ if n == 0 {return 1;} else {return n * @fact(n - 1);}} func @inc( n, delta: int):void { n := n + delta; return n; } func @main():int { var delta: int = @fact(3); @inc(self.x, delta); io.@writeInt(self.x); }}"""
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 223))
+    def test_24(self):
+        input = """class Program {
+        func  @inc( n, delta: int):void {
+            x.b[2] := x.m()[3];
+            a[3+x.foo(2)] := a[b[2]] +3;
+            return n;
+        }
+        }
+        """
+        expect = "successful"
+        self.assertTrue(TestParser.test(input, expect, 224))
+    

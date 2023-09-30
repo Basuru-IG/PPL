@@ -24,11 +24,6 @@ class CSlangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#classname.
-    def visitClassname(self, ctx:CSlangParser.ClassnameContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by CSlangParser#construcdecl.
     def visitConstrucdecl(self, ctx:CSlangParser.ConstrucdeclContext):
         return self.visitChildren(ctx)
@@ -74,78 +69,78 @@ class CSlangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CSlangParser#classname.
+    def visitClassname(self, ctx:CSlangParser.ClassnameContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by CSlangParser#attributelist.
     def visitAttributelist(self, ctx:CSlangParser.AttributelistContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#membername.
-    def visitMembername(self, ctx:CSlangParser.MembernameContext):
+    # Visit a parse tree produced by CSlangParser#expression.
+    def visitExpression(self, ctx:CSlangParser.ExpressionContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr.
-    def visitExpr(self, ctx:CSlangParser.ExprContext):
+    # Visit a parse tree produced by CSlangParser#expression1.
+    def visitExpression1(self, ctx:CSlangParser.Expression1Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr1.
-    def visitExpr1(self, ctx:CSlangParser.Expr1Context):
+    # Visit a parse tree produced by CSlangParser#expression2.
+    def visitExpression2(self, ctx:CSlangParser.Expression2Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr2.
-    def visitExpr2(self, ctx:CSlangParser.Expr2Context):
+    # Visit a parse tree produced by CSlangParser#expression3.
+    def visitExpression3(self, ctx:CSlangParser.Expression3Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr3.
-    def visitExpr3(self, ctx:CSlangParser.Expr3Context):
+    # Visit a parse tree produced by CSlangParser#expression4.
+    def visitExpression4(self, ctx:CSlangParser.Expression4Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr4.
-    def visitExpr4(self, ctx:CSlangParser.Expr4Context):
+    # Visit a parse tree produced by CSlangParser#expression5.
+    def visitExpression5(self, ctx:CSlangParser.Expression5Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr5.
-    def visitExpr5(self, ctx:CSlangParser.Expr5Context):
+    # Visit a parse tree produced by CSlangParser#expression6.
+    def visitExpression6(self, ctx:CSlangParser.Expression6Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr6.
-    def visitExpr6(self, ctx:CSlangParser.Expr6Context):
+    # Visit a parse tree produced by CSlangParser#expression7.
+    def visitExpression7(self, ctx:CSlangParser.Expression7Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr7.
-    def visitExpr7(self, ctx:CSlangParser.Expr7Context):
+    # Visit a parse tree produced by CSlangParser#expression8.
+    def visitExpression8(self, ctx:CSlangParser.Expression8Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr8.
-    def visitExpr8(self, ctx:CSlangParser.Expr8Context):
+    # Visit a parse tree produced by CSlangParser#expression9.
+    def visitExpression9(self, ctx:CSlangParser.Expression9Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr9.
-    def visitExpr9(self, ctx:CSlangParser.Expr9Context):
+    # Visit a parse tree produced by CSlangParser#expression10.
+    def visitExpression10(self, ctx:CSlangParser.Expression10Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr10.
-    def visitExpr10(self, ctx:CSlangParser.Expr10Context):
+    # Visit a parse tree produced by CSlangParser#expression11.
+    def visitExpression11(self, ctx:CSlangParser.Expression11Context):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by CSlangParser#expr11.
-    def visitExpr11(self, ctx:CSlangParser.Expr11Context):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by CSlangParser#list_of_expr.
-    def visitList_of_expr(self, ctx:CSlangParser.List_of_exprContext):
+    # Visit a parse tree produced by CSlangParser#list_of_expression.
+    def visitList_of_expression(self, ctx:CSlangParser.List_of_expressionContext):
         return self.visitChildren(ctx)
 
 
@@ -201,6 +196,11 @@ class CSlangVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by CSlangParser#method_stm.
     def visitMethod_stm(self, ctx:CSlangParser.Method_stmContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by CSlangParser#membername.
+    def visitMembername(self, ctx:CSlangParser.MembernameContext):
         return self.visitChildren(ctx)
 
 

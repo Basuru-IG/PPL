@@ -33,16 +33,16 @@ class LexerSuite(unittest.TestCase):
         self.assertTrue(TestLexer.test("12e-8\t", "12e-8,<EOF>", 109))
     def test_string_literals_9(self):
         """test_string_literals_9"""
-        self.assertTrue(TestLexer.test("\"This is a string containing tab \t \"", "\"abc	\",<EOF>", 110))
+        self.assertTrue(TestLexer.test(""" "This is a string containing tab \\t " """, "This is a string containing tab \\t "",<EOF>", 110))
     def test_string_literals_10(self):
         """test_string_literals_10"""
-        self.assertTrue(TestLexer.test("\"He asked me: \"Where is John?\"\"", "He asked me: \"Where is John?\"", 111))
+        self.assertTrue(TestLexer.test(""" "He asked me: \\"Where is John?\\"" """, "He asked me: \\\"Where is John?\\\",<EOF>", 111))
     def test_array_literals_11(self):
         """test_array_literals"""
-        self.assertTrue(TestLexer.test("[2.3, 4.2, 102e3]", "[2.3, 4.2, 102e3],<EOF>", 112))
+        self.assertTrue(TestLexer.test("[2.3, 4.2]", "[2.3, 4.2],<EOF>", 112))
     def test_array_literals_12(self):
         """test_array_literals_12"""
-        self.assertTrue(TestLexer.test("[2, 4, 102]", "[2, 4, 102],<EOF>", 113))
+        self.assertTrue(TestLexer.test("[2, 4]", "[2, 4],<EOF>", 113))
     def test_array_literals_13(self):
         """test_array_literals_13"""
         self.assertTrue(TestLexer.test("[1.5]", "[1.5],<EOF>", 114))
@@ -63,9 +63,22 @@ class LexerSuite(unittest.TestCase):
             @inc(self.x, delta);
             io.@writeInt(self.x);
         }}"""
-        expect = "class,Program,{,var,x,:,int,=,65,;,func,@,fact,(,n,:,int,),:,int,{,if,n,==,0,{,return,1,;,},else,{,return,n,*,@,fact,(,n,-,1,),;,},},func,@,inc,(,n,,,delta,:,int,),:,void,{,n,:=,n,+,delta,;,return,n,;,},func,@,main,(,),:,int,{,var,delta,:,int,=,@,fact,(,3,),;,@,inc,(,self,.,x,,,delta,),;,io,.,@,writeInt,(,self,.,x,),;,},},<EOF>"
+        expect = "class,Program,{,var,x,:,int,=,65,;,func,@fact,(,n,:,int,),:,int,{,if,n,==,0,{,return,1,;,},else,{,return,n,*,@fact,(,n,-,1,),;,},},func,@inc,(,n,,,delta,:,int,),:,void,{,n,:=,n,+,delta,;,return,n,;,},func,@main,(,),:,int,{,var,delta,:,int,=,@fact,(,3,),;,@inc,(,self,.,x,,,delta,),;,io,.,@writeInt,(,self,.,x,),;,},},<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 115))
     def test_11(self):
         input = """class ar5 { var a: [10]bool;}"""
         expect = "class,ar5,{,var,a,:,[10]bool,;,},<EOF>"
         self.assertTrue(TestLexer.test(input, expect, 116))
+    def test_15(self):
+        self.assertTrue(TestLexer.test(""" "He asked me: \\"Where is John?\\"" ""","He asked me: \\\"Where is John?\\\",<EOF>",117))
+    def test_16(self):
+        self.assertTrue(TestLexer.test("[true]", "[true],<EOF>", 118))
+    def test_17(self):
+        self.assertTrue(TestLexer.test("[false]", "[false],<EOF>", 119))
+    def test_18(self):
+        self.assertTrue(TestLexer.test("[true, false]", "[true, false],<EOF>", 120))
+    def test_19(self):
+        self.assertTrue(TestLexer.test("a[3+x.foo(2)] := a[b[2]] +3;", "a,[,3,+,x,.,foo,(,2,),],:=,a,[,b,[2],],+,3,;,<EOF>", 121))
+    def test_20(self):
+        self.assertTrue(TestLexer.test("x.b[2] := x.m()[3];", "class,Program,{,func,@inc,(,n,,,delta,:,int,),:,void,{,x,.,b,[2],:=,x,.,m,(,),[3],;,a,[,3,+,x,.,foo,(,2,),],:=,a,[,b,[2],],+,3,;,return,n,;,},<EOF>", 122))
+
