@@ -1,1 +1,1 @@
-class A{func @main():int {}}
+class Program{ const asdgsgsdgsd, b, c: int = 321, 4, 6;}

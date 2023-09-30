@@ -1,0 +1,10 @@
+class O {
+            var grades: [5]float;
+            func @calculateGradeAverage(): float {
+                var total: float = 0.0;
+                for i := 0; i < 5; i := i + 1 {
+                    total := total + grades[i];
+                }
+                return total / 5.0;
+            }
+        }

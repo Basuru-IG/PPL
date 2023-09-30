@@ -1,0 +1,6 @@
+class D {
+            func @main(): void {
+                var result: string = "Hello, World!";
+                io.@writeString(result);
+            }
+        }

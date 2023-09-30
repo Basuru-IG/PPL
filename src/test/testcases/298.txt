@@ -1,0 +1,11 @@
+class R {
+            func @main(): void {
+                var x, y: int = 5, 10;
+                if x < y {
+                    io.@writeString("x is less than y");
+                }
+                else {
+                    io.@writeString("x is greater than or equal to y");
+                }
+            }
+        }

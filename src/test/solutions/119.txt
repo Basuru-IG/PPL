@@ -1,1 +1,1 @@
-[false],<EOF>
+[,false,],<EOF>

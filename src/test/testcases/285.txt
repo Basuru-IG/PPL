@@ -1,0 +1,6 @@
+class E {
+            const PI: float = 3.14159265359;
+            func @calculateArea(radius: float): float {
+                return PI * radius * radius;
+            }
+        }

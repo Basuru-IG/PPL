@@ -1,0 +1,6 @@
+class A {
+            var delta: int = 3;
+            func @main(): int {
+                return delta * 2;
+            }
+        }

@@ -1,0 +1,6 @@
+class C {
+            var x, y, z: float = 1.0, 2.5, 3.5e-2;
+            func @average(): float {
+                return (x + y + z) / 3.0;
+            }
+        }
