@@ -1,0 +1,6 @@
+class Person {
+    var name: string;
+    func sayHello(): void {
+        writeln("Hello, ", name);
+    }
+}

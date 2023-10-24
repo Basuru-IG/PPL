@@ -1,0 +1,7 @@
+class Loop {
+            func @main(): void {
+                for j := 10; j > 0; j := j - 1 {
+                    io.@writeInt(j);
+                }
+            }
+        }

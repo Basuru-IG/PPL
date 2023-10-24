@@ -1,0 +1,6 @@
+class B {
+            var a, b, c: int = 1, 2, 3;
+            func @sum(): int {
+                return a + b + c;
+            }
+        }

@@ -1,0 +1,13 @@
+class Program {
+            func @main():int {
+                var x: int = 5;
+                var y: int = 10;
+                if x < y {
+                    return x;
+                }
+                else {
+                    return y;
+                }
+            }
+        }
+        

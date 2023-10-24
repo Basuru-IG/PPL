@@ -1,0 +1,6 @@
+class F {
+            var counter: int;
+            func @countToTen(): void {
+                counter := 1;
+            }
+        }

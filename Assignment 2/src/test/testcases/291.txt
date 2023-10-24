@@ -1,0 +1,12 @@
+class K {
+            func @main(): void {
+                var x, y, z: int = 1, 2, 3;
+                var sum: int = x + y + z;
+                if sum >= 5 {
+                    io.@writeString("Sum is greater than or equal to 5");
+                }
+                else {
+                    io.@writeString("Sum is less than 5");
+                }
+            }
+        }

@@ -1,0 +1,1 @@
+class A{func @main():int {}}

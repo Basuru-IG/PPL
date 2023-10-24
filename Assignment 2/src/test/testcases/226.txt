@@ -1,0 +1,8 @@
+class Program {
+            var x: int;
+            func @main():int {
+                x := 0;
+                return x;
+            }
+        }
+        

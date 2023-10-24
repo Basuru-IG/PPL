@@ -1,0 +1,8 @@
+class Program {
+        func  @inc( n, delta: int):void {
+            x.b()[4+55] := x.m()[3];
+            a[3+x.foo(2)] := a[b[2+1]] +3;
+            return n;
+        }
+        }
+        

@@ -1,0 +1,6 @@
+class A{
+            var @x, @y : int = 0, 0;
+            /* This is a block comment, that
+            may span in many lines*/
+            //this is a line comment  @x, @y : int = 0, 0;
+            }

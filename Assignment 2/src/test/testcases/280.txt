@@ -1,0 +1,8 @@
+class Loop {
+            var numbers: [10]int;
+            func @initializeArray(): void {
+                for i := 0; i < 10; i := i + 1 {
+                    numbers[i] := i * 2;
+                }
+            }
+        }

@@ -1,0 +1,1 @@
+class ar5 { var a: [10]bool;}
