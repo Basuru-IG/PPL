@@ -1,0 +1,15 @@
+
+class X {
+    func foo(): void {
+        if true {
+            if false {
+                if { if true {} } true {
+                    
+                } else {
+                    
+                }
+            }
+        }
+    }
+}
+        

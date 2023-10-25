@@ -1,0 +1,7 @@
+
+class X {
+    func foo(): void {
+        if {} 3 % 2 == 1 {} else {}
+    }
+}
+        

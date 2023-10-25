@@ -1,0 +1,7 @@
+
+class A {
+    var x: int;
+    var y, z: int = 1, 2;
+    const a, b: int = 3, 4;
+}
+        

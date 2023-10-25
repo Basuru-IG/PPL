@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(ComplexExpressions),[AttributeDecl(VarDecl(Id(a),IntType)),AttributeDecl(VarDecl(Id(b),IntType)),MethodDecl(Id(calculate),[Param(Id(c),IntType),Param(Id(d),IntType)],IntType,Block([Return(BinaryOp(+,BinaryOp(*,BinaryOp(+,Id(a),Id(b)),BinaryOp(-,Id(c),Id(d))),BinaryOp(/,Id(c),BinaryOp(+,Id(d),IntLit(1)))))]))])])

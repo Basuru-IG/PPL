@@ -1,0 +1,6 @@
+
+class A {
+    func constructor(x: int) {}
+    func constructor(y: int) {}
+}
+        

@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(A),[AttributeDecl(VarDecl(Id(@a),StringType,StringLit(Li))),AttributeDecl(VarDecl(Id(@b),StringType,StringLit(Quang))),AttributeDecl(VarDecl(Id(@c),StringType,StringLit(Tien)))])])

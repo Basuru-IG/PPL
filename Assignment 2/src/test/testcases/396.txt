@@ -1,0 +1,9 @@
+
+    class ComplexExpressions {
+        var a, b: int;
+        
+        func calculate(c: int, d: int): int {
+            return (a + b) * (c - d) + c / (d + 1);
+        }
+    }
+        

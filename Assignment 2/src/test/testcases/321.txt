@@ -1,0 +1,9 @@
+
+class X {
+    var count: int = 0;
+    
+    func foo(): void {
+        self.count := self.count + 1;
+    }
+}
+        

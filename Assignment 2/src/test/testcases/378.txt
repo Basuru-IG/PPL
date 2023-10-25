@@ -1,0 +1,17 @@
+
+    class Calculator {
+        var result: float;
+        
+        func add(a: float, b: float): void {
+            result := a + b;
+        }
+        
+        func subtract(a: float, b: float): void {
+            result := a - b;
+        }
+        
+        func clear(): void {
+            result := 0.0;
+        }
+    }
+        

@@ -1,0 +1,12 @@
+
+    class Complex {
+        func complexExpression(a: int, b: int, c: int, d: int, e: int): int {
+            var x: int = (a + b) * (c - d) / (e + 1);
+            if x > 100 {
+                return a + b;
+            } else {
+                return a - b;
+            }
+        }
+    }
+        

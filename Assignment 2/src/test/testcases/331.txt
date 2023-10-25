@@ -1,0 +1,17 @@
+
+class Area {
+    const @PI: float = 3.14;
+    
+    func calculate(radius: float): float {
+        return radius * radius * @PI;
+    }
+}
+
+class Program {
+    func @main(): void {
+        var radius: float = 2.0;
+        var area: Area = new Area();
+        io.@writeFloat(area.calculate(radius));
+    }
+}
+        

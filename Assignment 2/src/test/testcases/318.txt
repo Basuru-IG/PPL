@@ -1,0 +1,9 @@
+
+class X {
+    func foo(): void {
+        var x: int;
+        var y: int = 1;
+        const z: int = 1;
+    }
+}
+        

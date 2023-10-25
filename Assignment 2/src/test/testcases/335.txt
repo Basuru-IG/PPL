@@ -1,0 +1,6 @@
+
+class A {
+    var a, b, c: bool = true, false, true;
+    const @d, @e, @f: float = 1.1, 2.2, 3.3;
+}
+        

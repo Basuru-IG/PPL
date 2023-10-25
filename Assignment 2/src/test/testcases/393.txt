@@ -1,0 +1,15 @@
+
+    class Test {
+        func complexMethod(a: int, b: int): bool {
+            return (a + b > 0) && self.isValid() && (io.@input() == "yes");
+        }
+        
+        func isValid(): bool {
+            return self.calculate() % 2 == 0;
+        }
+
+        func calculate(): int {
+            return (1 + 2) * 3 - 4 / 2;
+        }
+    }
+        

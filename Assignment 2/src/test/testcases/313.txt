@@ -1,0 +1,8 @@
+
+class IntObject {
+    var a: int = 1 + 2;
+    var b: int = 3 * 4 - 5;
+    var c: int = (1 + 2) * 3;
+    var d, e: int = 1 * 3 + 2, 9 / (4 - (2 - 1));
+}
+        

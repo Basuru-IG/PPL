@@ -1,0 +1,9 @@
+
+class B {
+    const @count: int = 0;
+}
+
+class A {
+    const @_, @__, @___: int = (1 + 2) * 3, 4 / 5 * 2, B.@count;
+}
+        

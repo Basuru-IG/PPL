@@ -1,1 +1,1 @@
-class,main,{,var,a,:,int,;,var,b,:,int,;,},<EOF>
+abc,<EOF>

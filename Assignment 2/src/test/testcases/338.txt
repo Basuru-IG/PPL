@@ -1,0 +1,7 @@
+
+class B {}
+
+class A {
+    var _, __, ___: B = new B(), new B(), new B();
+}
+        

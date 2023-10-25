@@ -1,0 +1,13 @@
+
+class A {
+    const @values: [5]int = [1, 2, 3, 4, 5];
+    
+    func valueAtElement(index: int): int {
+        if (index < 0) || (index >= 5) {
+            return -1;
+        }
+        
+        return @values[index];
+    }
+}
+        

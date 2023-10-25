@@ -1,0 +1,25 @@
+
+    class Challenging {
+        var n: int = 5;
+        
+        func recursive(n: int): int {
+            if n <= 1 {
+                return 1;
+            }
+            return n * self.recursive(n - 1);
+        }
+        
+        func complex(n: int): int {
+            var result: int = 0;
+            for i := 1; i <= n; i := i + 1 {
+                if i % 2 == 0 {
+                    result := result + i;
+                } else {
+                    var x: int = self.recursive(i);
+                    result := result - x;
+                }
+            }
+            return result;
+        }
+    }
+        

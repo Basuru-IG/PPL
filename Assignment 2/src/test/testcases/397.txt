@@ -1,0 +1,9 @@
+
+    class ComplexLogical {
+        var p, q, r: bool;
+        
+        func complexLogic(a: bool, b: bool, c: bool): bool {
+            return p && (q || r) && (a && b || c);
+        }
+    }
+        

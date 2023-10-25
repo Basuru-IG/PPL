@@ -1,0 +1,13 @@
+
+    class Logic {
+        func checkAndOr(x: bool, y: bool, z: bool): bool {
+            if x && y {
+                return true;
+            }
+            if z || !x {
+                return false;
+            }
+            return true;
+        }
+    }
+        

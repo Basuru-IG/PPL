@@ -1,0 +1,35 @@
+
+class A {
+    const value: int = 1;
+    
+    func constructor() {}
+}
+
+class B {
+    var a: A;
+    
+    func constructor(a: A) {
+        self.a := a;
+    }
+}
+
+class C {
+    var b: B;
+    
+    func constructor(b: B) {
+        self.b := b;
+    }
+}
+
+class D {
+    var c: C;
+    
+    func constructor(c: C) {
+        self.c := c;
+    }
+    
+    func do(): void {
+        io.@writeInt(self.c.b.a.value);
+    }
+}
+        

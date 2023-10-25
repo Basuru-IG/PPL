@@ -1,0 +1,32 @@
+
+class Rank {
+    var value: string;
+    
+    func constructor(value: string) {
+    }
+}
+
+class ProgrammingLanguage {
+    var value: string;
+    
+    func constructor(value: string) {}
+}
+
+class Programmer {
+    var language: ProgrammingLanguage;
+    var rank: Rank;
+    
+    func constructor(language: ProgrammingLanguage, rank: Rank) {
+        self.language := language;
+        self.rank := rank;
+    }
+    
+    func execute(test: string): void {}
+}
+
+class Program {
+    func @main(): void {
+        var programmer: Programmer = new Programmer(new Rank("junior"), new ProgrammingLanguage("Python"));
+    }
+}
+        

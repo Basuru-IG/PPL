@@ -1,0 +1,5 @@
+
+class A <- B {
+    func foo(a, b: string, c: int, d, e, f: bool): void {}
+}
+        

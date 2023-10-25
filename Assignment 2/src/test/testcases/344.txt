@@ -1,0 +1,6 @@
+
+class A {
+    var @a: string = ("Li" ^ "Quang") ^ "Tien";
+    
+}
+        

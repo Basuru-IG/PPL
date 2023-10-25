@@ -1,0 +1,13 @@
+
+        class Person {
+            var name: string;
+            
+            func setName(newName: string): void {
+                name := newName;
+            }
+            
+            func sayHello(): void {
+                io.@writeString(("Hello, " ^ name) ^ "!");
+            }
+        }
+            

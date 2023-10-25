@@ -1,0 +1,22 @@
+
+    class Shapes {
+        var pi: float = 3.141592653589793;
+        
+        func calculateArea(radius: float): float {
+            var area: float = self.pi * radius * radius;
+            return area;
+        }
+        
+        func calculatePerimeter(side: int): int {
+            return side * 4;
+        }
+        
+        func isRectangle(width: int, height: int): bool {
+            return width != height;
+        }
+        
+        func isSquare(length: int): bool {
+            return self.isRectangle(length, length);
+        }
+    }
+        

@@ -46,7 +46,7 @@ class ASTGeneration(CSlangVisitor):
     
     # construcdecl: FUNC CONSTRUCTOR paramdecl block_stmt;
     def visitConstrucdecl(self,ctx:CSlangParser.ConstrucdeclContext):
-        return MethodDecl(Id(ctx.CONSTRUCTOR().getText()), self.visit(ctx.paramdecl()), VoidType(), self.visit(ctx.block_stmt()))
+        return [MethodDecl(Id("constructor"), self.visit(ctx.paramdecl()), VoidType(), self.visit(ctx.block_stmt()))]
     
     
     # attributedecl: attributedecl: (CONST | VAR) attributelist COLON mctype (EQ initlist){len($attributelist.text.split(',')) == len($initlist.text.split(','))}? SM | (CONST | VAR) attributelist COLON mctype SM;
@@ -56,22 +56,15 @@ class ASTGeneration(CSlangVisitor):
         if ctx.VAR():
             if ctx.initlist():
                 init_list = self.visit(ctx.initlist())
-                if len(variable_list) == len(init_list):
-                    return [AttributeDecl(VarDecl(variable_list[i], mctype, init_list[i])) for i in range(len(variable_list))]
-                else:
-                    raise Exception("Error: Variable list and init list have different length")
+                return [AttributeDecl(VarDecl(variable_list[i], mctype, init_list[i])) for i in range(len(variable_list))]
             else:
                 return [AttributeDecl(VarDecl(variable_list[i], mctype)) for i in range(len(variable_list))]
         else:
             if ctx.initlist():
                 init_list = self.visit(ctx.initlist())
-                if len(variable_list) == len(init_list):
-                    return [AttributeDecl(ConstDecl(variable_list[i], mctype, init_list[i])) for i in range(len(variable_list))]
-                else:
-                    raise Exception("Error: Variable list and init list have different length")
+                return [AttributeDecl(ConstDecl(variable_list[i], mctype, init_list[i])) for i in range(len(variable_list))]
             else:
                 return [AttributeDecl(ConstDecl(variable_list[i], mctype)) for i in range(len(variable_list))]
-
 
     # methoddecl: FUNC membername paramdecl COLON mctype block_stmt;
     # paramdecl: LP paramlist? RP;
@@ -132,9 +125,9 @@ class ASTGeneration(CSlangVisitor):
         else:
             return self.visit(ctx.array_type())
         
-    # classtype: NEW ID LP RP;
+    # classtype: membername;
     def visitClasstype(self,ctx:CSlangParser.ClasstypeContext):
-        return ClassType(Id(ctx.ID().getText()))
+        return ClassType(self.visit(ctx.membername()))
     
     # array_type: OB INTLIT CB (INT | FLOAT | BOOL | STRING | ID);
     def visitArray_type(self,ctx:CSlangParser.Array_typeContext):
@@ -146,8 +139,8 @@ class ASTGeneration(CSlangVisitor):
             type = BoolType()
         elif ctx.STRING():
             type = StringType()
-        # elif ctx.ID():
-        #     type = ClassType(Id(ctx.ID().getText()))
+        elif ctx.ID():
+            type = ClassType(Id(ctx.ID().getText()))
         return ArrayType(int(ctx.INTLIT().getText()), type)
     
     # expression: expression1 CONCATENATION expression1 | expression1;
@@ -287,16 +280,22 @@ class ASTGeneration(CSlangVisitor):
             return self.visit(ctx.operands())
         
         
-    # operands: LP expression RP | ID | literal | SELF DOT ID | NULL ;
+    # operands: LP expression RP | ID | literal | SELF DOT ID | SELF DOT ID LP list_of_expression RP| NULL ;
     def visitOperands(self,ctx:CSlangParser.OperandsContext):
         if ctx.getChildCount() == 3:
-            return self.visit(ctx.expression())
+            if ctx.expression():
+                return self.visit(ctx.expression())
+            return FieldAccess(SelfLiteral(), Id(ctx.ID().getText()))
+        elif ctx.SELF():
+            if ctx.getChildCount() == 6:
+                return CallExpr(SelfLiteral(), Id(ctx.ID().getText()), self.visit(ctx.list_of_expression()))
+            elif ctx.getChildCount() == 5:
+                return CallExpr(SelfLiteral(), Id(ctx.ID().getText()), [])
+            return FieldAccess(SelfLiteral(), Id(ctx.ID().getText()))
         elif ctx.ID():
             return Id(ctx.ID().getText())
         elif ctx.literal():
             return self.visit(ctx.literal())
-        elif ctx.SELF():
-            return SelfLiteral()
         else:
             return NullLiteral()
         
@@ -305,7 +304,7 @@ class ASTGeneration(CSlangVisitor):
         return [self.visit(x) for x in ctx.expression()]
     
     # statement: 
-    #     attributedecl
+    #     	block_vardecl
     #     | assign_stmt SM
     #     | if_stmt
     #     | for_stmt
@@ -324,8 +323,33 @@ class ASTGeneration(CSlangVisitor):
     
     # member_block: statement*;
     def visitMember_block(self,ctx:CSlangParser.Member_blockContext):
-        return [self.visit(x) for x in ctx.statement()]
+        # return [self.visit(x) for x in ctx.statement()]
+        result = []
+        for x in ctx.statement():
+            if type(self.visit(x)) == list:
+                result += self.visit(x)
+            else:
+                result.append(self.visit(x))
+        return result
     
+    # block_vardecl: (VAR | CONST) attributelist COLON mctype (EQ initlist) SM 
+	# | (VAR | CONST) attributelist COLON mctype SM;
+    def visitBlock_vardecl(self,ctx:CSlangParser.Block_vardeclContext):
+        mctype = self.visit(ctx.mctype())
+        variable_list = self.visit(ctx.attributelist())
+        if ctx.VAR():
+            if ctx.initlist():
+                init_list = self.visit(ctx.initlist())
+                return [VarDecl(variable_list[i], mctype, init_list[i]) for i in range(len(variable_list))]
+            else:
+                return [VarDecl(variable_list[i], mctype) for i in range(len(variable_list))]
+        else:
+            if ctx.initlist():
+                init_list = self.visit(ctx.initlist())
+                return [ConstDecl(variable_list[i], mctype, init_list[i]) for i in range(len(variable_list))]
+            else:
+                return [ConstDecl(variable_list[i], mctype) for i in range(len(variable_list))]
+
     # assign_stmt: (ID | expression7) ASSIGN expression;
     def visitAssign_stmt(self,ctx:CSlangParser.Assign_stmtContext):
         if ctx.ID():
@@ -389,14 +413,20 @@ class ASTGeneration(CSlangVisitor):
         elif ctx.getChildCount() == 5:
             # | expression DOT ID LP RP
             # | ID DOT STATIC LP RP
+            # |SELF DOT ID LP RP;
             if ctx.expression():
                 return CallStmt(self.visit(ctx.expression()), Id(ctx.ID().getText()), [])
+            elif ctx.SELF():
+                return CallStmt(SelfLiteral(), Id(ctx.ID().getText()), [])
             return CallStmt(Id(ctx.ID().getText()), Id(ctx.STATIC().getText()), [])
         elif ctx.getChildCount() == 6:
             # | expression DOT ID LP list_of_expression RP
             # | ID DOT STATIC LP list_of_expression RP
+            # | SELF DOT ID LP list_of_expression RP
             if ctx.expression():    
                 return CallStmt(self.visit(ctx.expression()), Id(ctx.ID().getText()), self.visit(ctx.list_of_expression()))
+            elif ctx.SELF():
+                return CallStmt(SelfLiteral(), Id(ctx.ID().getText()), self.visit(ctx.list_of_expression()))
             return CallStmt(Id(ctx.ID().getText()), Id(ctx.STATIC().getText()), self.visit(ctx.list_of_expression()))
         
 
@@ -409,7 +439,9 @@ class ASTGeneration(CSlangVisitor):
         elif ctx.STRING_LITERAL():
             return StringLiteral(ctx.STRING_LITERAL().getText())
         elif ctx.BOOLLIT():
-            return BooleanLiteral(ctx.BOOLLIT().getText())
+            if ctx.BOOLLIT().getText() == "true":
+                return BooleanLiteral(True)
+            return BooleanLiteral(False)
         else:
             return self.visit(ctx.array_literal())
     
@@ -420,7 +452,7 @@ class ASTGeneration(CSlangVisitor):
         else:
             return ArrayLiteral([])
         
-    # elem: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT;
+    # elem: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT | NEW ID LP (list_of_expression)? RP;
     def visitElem(self,ctx:CSlangParser.ElemContext):
         if ctx.INTLIT():
             return IntLiteral(int(ctx.INTLIT().getText()))
@@ -429,7 +461,14 @@ class ASTGeneration(CSlangVisitor):
         elif ctx.STRING_LITERAL():
             return StringLiteral(ctx.STRING_LITERAL().getText())
         elif ctx.BOOLLIT():
-            return BooleanLiteral(ctx.BOOLLIT().getText())
+            if ctx.BOOLLIT().getText() == "true":
+                return BooleanLiteral(True)
+            return BooleanLiteral(False)
+        else:
+            if ctx.list_of_expression():
+                return NewExpr(Id(ctx.ID().getText()), self.visit(ctx.list_of_expression()))
+            else:
+                return NewExpr(Id(ctx.ID().getText()), [])
             
 
 

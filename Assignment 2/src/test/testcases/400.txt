@@ -1,0 +1,39 @@
+
+class Node {
+    var data: int;
+    var next: Node;
+    
+    func constructor(data: int, next: Node) {
+        self.data := data;
+        self.next := next;
+    }
+}
+
+class LinkedList {
+    var head: Node;
+    
+    func constructor(head: Node) {
+        self.head := head;
+    }
+    
+    func insert(data: int): void {
+        var newNode: Node = new Node(data, self.head);
+        self.head := newNode;
+    }
+    
+    func search(data: int): bool {
+        for current := self.head; current != null; current := current.next {
+            if current.data == data {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    func display(): void {
+        for current := self.head; current != null; current := current.next {
+            io.@writeInt(current.data);
+        }
+    }
+}
+        

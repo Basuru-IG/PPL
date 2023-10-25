@@ -1,1 +1,8 @@
-class main{func foo():void {return;}}
+
+class A {
+    func foo(): int {
+        var x: X = new X();
+        x.a.b.c[0] := x.foo() + x.y[0].bar(1, 2, 3);
+    }
+}
+        

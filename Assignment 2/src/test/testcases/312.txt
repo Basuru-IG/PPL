@@ -1,0 +1,6 @@
+
+class B {
+    func a(x: int, y: bool, z: B): void {}
+    func b(x: A, y: B, c: string): void {}
+}
+        

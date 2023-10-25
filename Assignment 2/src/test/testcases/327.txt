@@ -1,0 +1,13 @@
+
+class X {
+    var @count: int = 0;
+    
+    func @getCount(): int {
+        return @count;
+    }
+    
+    func foo(): void {
+        io.@writeInt(@getCount());
+    }
+}
+        

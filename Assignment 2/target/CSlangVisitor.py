@@ -159,6 +159,11 @@ class CSlangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by CSlangParser#block_vardecl.
+    def visitBlock_vardecl(self, ctx:CSlangParser.Block_vardeclContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by CSlangParser#assign_stmt.
     def visitAssign_stmt(self, ctx:CSlangParser.Assign_stmtContext):
         return self.visitChildren(ctx)

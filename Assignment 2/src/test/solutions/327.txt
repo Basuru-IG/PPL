@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(X),[AttributeDecl(VarDecl(Id(@count),IntType,IntLit(0))),MethodDecl(Id(@getCount),[],IntType,Block([Return(FieldAccess(Id(@count)))])),MethodDecl(Id(foo),[],VoidType,Block([Call(Id(io),Id(@writeInt),[CallExpr(Id(@getCount),[])])]))])])

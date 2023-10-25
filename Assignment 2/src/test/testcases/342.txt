@@ -1,0 +1,6 @@
+
+class A {
+    var _, __, ___, ____: bool = true && false, false || false || true, true && true && false, false && false && true;
+    
+}
+        

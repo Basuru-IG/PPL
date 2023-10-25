@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([If(BinaryOp(!=,BinaryOp(%,IntLit(2),IntLit(2)),IntLit(0)),Block([Return()])),Call(Id(io),Id(@writeString),[StringLit(even number)])]))])])

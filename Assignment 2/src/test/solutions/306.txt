@@ -1,1 +1,0 @@
-Program([ClassDecl(Id(main),[MethodDecl(Id(foo),[],VoidType,Block([Return()]))])])

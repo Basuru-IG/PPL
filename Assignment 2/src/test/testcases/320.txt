@@ -1,0 +1,9 @@
+
+class X {
+    func foo(): void {
+        var arr: [2]float;
+        arr[0] := 1.1;
+        arr[1] := 2.2;
+    }
+}
+        

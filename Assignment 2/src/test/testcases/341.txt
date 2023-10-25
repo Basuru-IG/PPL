@@ -1,0 +1,9 @@
+
+class X {
+    const @a, @b, @c, @d, @e, @f: float = 9.0, 12e8, 1., 0.33E-3, 128e+42, 1.00000001e-1;
+    
+    func getValue(): float {
+        return @a + @b * @c - @d / @e + @f;
+    }
+}
+        

@@ -25,7 +25,7 @@ classmember: attributedecl
 	| construcdecl classmember;
 
 construcdecl: FUNC CONSTRUCTOR paramdecl block_stmt;
-attributedecl: (CONST | VAR) attributelist COLON mctype (EQ initlist) SM
+attributedecl: (CONST | VAR) attributelist COLON mctype (EQ initlist) SM 
 	| (CONST | VAR) attributelist COLON mctype SM;
 
 // attributedecl: var_attr | const_attr;
@@ -53,7 +53,7 @@ param: attributelist COLON mctype; // When two or more consecutive named functio
 
 mctype: INT | FLOAT | BOOL | STRING | VOID  | classtype | array_type;
 
-classtype: NEW ID LP RP;
+classtype: membername;
 // classname: ID;
 
 array_type: OB INTLIT CB (INT | FLOAT | BOOL | STRING | ID);
@@ -89,13 +89,13 @@ expression9: expression9 DOT ID
 
 expression10: NEW ID LP (list_of_expression)? RP expression10? | operands;
 
-operands: LP expression RP | ID | literal | SELF DOT ID | NULL ;
+operands: LP expression RP | ID | literal | SELF DOT ID | SELF DOT ID LP list_of_expression RP |SELF DOT ID LP RP| NULL ;
 
 list_of_expression: expression (CM expression)*;
 
 
 statement: 
-	attributedecl
+	block_vardecl
 	| assign_stmt SM
 	| if_stmt
 	| for_stmt
@@ -107,6 +107,8 @@ statement:
 
 block_stmt: LB member_block RB;
 member_block: statement*;
+block_vardecl: (VAR | CONST) attributelist COLON mctype (EQ initlist) SM 
+	| (VAR | CONST) attributelist COLON mctype SM;
 assign_stmt: (ID | expression7) ASSIGN expression;
 // if_stmt: IF block_stmt? expression block_stmt (ELSE block_stmt)?; 
 if_stmt: IF block_stmt expression block_stmt ELSE block_stmt
@@ -126,7 +128,9 @@ method_stm: | expression DOT ID LP list_of_expression RP
 			| STATIC LP list_of_expression RP
 			| expression DOT ID LP RP
 			| ID DOT STATIC LP RP
-			| STATIC LP RP;
+			| STATIC LP RP
+			| SELF DOT ID LP list_of_expression RP
+			| SELF DOT ID LP RP;
 // instance_method: expression DOT ID LP list_of_expression? RP;
 // static_method: (ID DOT)? STATIC LP list_of_expression? RP;
 
@@ -192,7 +196,7 @@ COLON: ':';
 EXTENDS: '<-';
 
 array_literal: OB (elem (CM elem)*)? CB;
-elem: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT;
+elem: INTLIT | FLOATLIT | STRING_LITERAL | BOOLLIT | NEW ID LP (list_of_expression)? RP;
 
 
 

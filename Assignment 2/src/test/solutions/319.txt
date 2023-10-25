@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([VarDecl(Id(radius),FloatType),AssignStmt(Id(radius),FloatLit(3.6))]))])])

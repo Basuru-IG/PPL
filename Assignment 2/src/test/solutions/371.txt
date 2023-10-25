@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(Retangle),Id(Shape),[MethodDecl(Id(getArea),[],IntType,Block([Return(BinaryOp(*,FieldAccess(Self(),Id(length)),FieldAccess(Self(),Id(width))))]))])])

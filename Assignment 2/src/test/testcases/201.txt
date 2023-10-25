@@ -1,4 +1,1 @@
-class main {
-            var a:int;
-            var b:int;
-        }
+class Program{ const asdgsgsdgsd, b, c: int = 321, 4, 6;}

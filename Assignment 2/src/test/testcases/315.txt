@@ -1,0 +1,6 @@
+
+class BoolObject {
+    var a: bool = true;
+    var b: bool = true && false;
+}
+        

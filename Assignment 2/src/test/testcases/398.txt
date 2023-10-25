@@ -1,0 +1,16 @@
+
+    class ComplexAssignments {
+        var x, y: int;
+        
+        func calculateAndAssign(a: int, b: int): void {
+            x := a + b;
+            y := x * a;
+            self.printResult();
+        }
+        
+        func printResult(): void {
+            io.@writeInt(x);
+            io.@writeInt(y);
+        }
+    }
+        

@@ -1,0 +1,19 @@
+
+    class Advanced {
+        func complexLoop(n: int): int {
+            var result: int = 0;
+            for i := 1; i <= n; i := i + 1 {
+                result := result + i;
+            }
+            return result;
+        }
+        
+        func recursiveSum(n: int): int {
+            if n == 0 {
+                return 0;
+            } else {
+                return n + self.recursiveSum(n - 1);
+            }
+        }
+    }
+        

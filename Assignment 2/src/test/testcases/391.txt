@@ -1,0 +1,15 @@
+
+    class Calculator {
+        var result: int;
+        
+        func calculate(a: int, b: int): int {
+            var temp: int;
+            if a < b {
+                temp := a + b;
+            } else {
+                temp := a - b;
+            }
+            return temp;
+        }
+    }
+        

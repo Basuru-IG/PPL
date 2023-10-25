@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([If(BooleanLit(True),Block([If(BooleanLit(False),Block([If(Block([If(BooleanLit(True),Block([]))]),BooleanLit(True),Block([]),Block([]))]))]))]))])])

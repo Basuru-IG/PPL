@@ -1,0 +1,21 @@
+
+class Employee {
+    const @maxCount: int = 10;
+    var @employees: [10]Employee = [new Employee(), new Employee(), new Employee(), new Employee(), new Employee(), new Employee(), new Employee(), new Employee(), new Employee(), new Employee()];
+    var @count: int = 0;
+    var name: string;
+    var age: int;
+    
+    func constructor(name: string, age: int) {    
+        self.name := name;
+        self.age := age;
+    }
+    
+    func @register(employee: Employee): void {
+        if @count < @maxCount {
+            @employees[@count] := employee;
+            @count := @count + 1;
+        }
+    }
+}
+        

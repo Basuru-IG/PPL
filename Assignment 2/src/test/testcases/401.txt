@@ -1,0 +1,6 @@
+
+class A {
+    func a(): void {}
+    func constructor() {}
+}
+        

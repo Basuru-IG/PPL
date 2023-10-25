@@ -1,0 +1,11 @@
+
+class X {
+    func foo(): void {
+        if 2 % 2 != 0 {
+            return;
+        }
+        
+        io.@writeString("even number");
+    }
+}
+        

@@ -1,0 +1,17 @@
+
+    class Expressions {
+        var x: int = 5;
+        var y: float = 3.14;
+        
+        func calculate(a, b: int): void {
+            x := a + b;
+            y := x / 2;
+            if x >= 10 {
+                x := x + 5;
+            }
+            else {
+                x := x - 5;
+            }
+        }
+    }
+        
