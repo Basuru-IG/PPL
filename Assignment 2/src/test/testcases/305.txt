@@ -1,9 +1,1 @@
-
-class Program {
-    func @main(): void {
-        var x: int = 1;
-        x := x + 1;
-        x.foo();
-    }
-}
-        
+class main{func foo():void {return @count;}}

@@ -1,13 +1,15 @@
-
-    class ComplexExpressions {
-        func complexMethod(): int {
-            return (1 + 2) * (3 - 4) / (5 + 6) % 7;
+class Loop {
+            func @main(): void {
+                var result: int;
+                for i := 1; i <= 5; i := i + 1 {
+                    if i % 2 == 0 {
+                        result := i * 2;
+                        io.@writeInt(result);
+                    }
+                    else {
+                        result := i * 3;
+                        io.@writeInt(result);
+                    }
+                }
+            }
         }
-        
-        func callComplex(): void {
-            var result: int;
-            result := self.complexMethod();
-            io.@writeInt(result);
-        }
-    }
-        

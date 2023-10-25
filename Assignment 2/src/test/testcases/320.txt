@@ -1,9 +1,37 @@
+class HNode {
+                        var value: int;
+                        var pnext: HNode;
+                        
+                        func constructor(value: int, pnext: HNode) {
+                            self.value := value;
+                            self.pnext := pnext;
+                        }
+                    }
 
-class X {
-    func foo(): void {
-        var arr: [2]float;
-        arr[0] := 1.1;
-        arr[1] := 2.2;
-    }
-}
-        
+                    class List {
+                        var head: HNode;
+                        
+                        func constructor(head: HNode) {
+                            self.head := head;
+                        }
+                        
+                        func addNode(value: int): void {
+                            var newN: HNode = new HNode(value, self.head);
+                            self.head := newN;
+                        }
+                        
+                        func search(value: int): bool {
+                            for pcurrent := self.head; pcurrent != null; pcurrent := pcurrent.pnext {
+                                if pcurrent.value == value {
+                                    return true;
+                                }
+                            }
+                            return false;
+                        }
+                        
+                        func printlist(): void {
+                            for pcurrent := self.head; pcurrent != null; pcurrent := pcurrent.pnext {
+                                io.@writeInt(pcurrent.value);
+                            }
+                        }
+                    }

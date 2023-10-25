@@ -1,5 +1,10 @@
-
-class A {
-    var @a, @b, @c: string = "Li", "Quang", "Tien";
-}
+class Program {
+            func @fnc():int {
+                var delta: [10]delta;
+                for i := 0; i < 10; i := i + 1 {
+                    io.@writeStr(i);
+                }
+                return arr[5];
+            }
+        }
         

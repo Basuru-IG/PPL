@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([If(BinaryOp(!=,BinaryOp(%,IntLit(2),IntLit(2)),IntLit(0)),Block([Return()])),Call(Id(io),Id(@writeString),[StringLit(even number)])]))])])
+Program([ClassDecl(Id(Retangle),Id(Shape),[MethodDecl(Id(getArea),[],IntType,Block([Return(BinaryOp(*,FieldAccess(Self(),Id(length)),FieldAccess(Self(),Id(width))))]))])])

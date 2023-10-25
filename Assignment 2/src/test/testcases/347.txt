@@ -1,20 +1,9 @@
-
-class X {
-    func foo(x: int): int {
-        return x;
-    }
-}
-
-class A {
-    var a: [5]int = [1, 2, 3, 4, 5];
-    var b: [3]int = [1, 2, 3];
-}
-
-class Program {
-    func @main(): void {
-        var a: A = new A();
-        var x: X = new X();
-        io.@writeInt(a.a[3 - x.foo(1)] + a.b[a.a[0] + 1]);
-    }
-}
-        
+class Loop {
+            func @main(): void {
+                var sum: int = 0;
+                for i := 1; i <= 100; i := i + 1 {
+                    sum := sum + i;
+                }
+                io.@writeInt(sum);
+            }
+        }

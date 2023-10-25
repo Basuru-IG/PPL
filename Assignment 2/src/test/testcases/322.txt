@@ -1,7 +1,9 @@
-
-class X {
-    func foo(): void {
-        if {} 3 % 2 == 1 {} else {}
-    }
-}
-        
+class S {
+            var n: int;
+            func @isEven(): bool {
+                if n % 2 == 0 {
+                    return true;
+                }
+                return false;
+            }
+        }

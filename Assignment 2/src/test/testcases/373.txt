@@ -1,32 +1,10 @@
-
-    class ComplexMath {
-        func power(x: float, n: int): float {
-            if n == 0 {
-                return 1.0;
-            }
-            if n % 2 == 0 {
-                var halfPower: float = self.power(x, n / 2);
-                return halfPower * halfPower;
-            } else {
-                return x * self.power(x, n - 1);
+class Program {
+            func @main():int {
+                var a, b, c: int;
+                a := 1;
+                b := 2;
+                c := a + b;
+                return c;
             }
         }
-
-        func fibonacci(n: int): int {
-            if n == 0 {
-                return 0;
-            }
-            if n == 1 {
-                return 1;
-            }
-            var a: int = 0;
-            var b: int = 1;
-            for i := 2; i <= n; i := i + 1 {
-                var next: int = a + b;
-                a := b;
-                b := next;
-            }
-            return b;
-        }
-    }
-    
+        

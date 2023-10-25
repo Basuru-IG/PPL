@@ -1,16 +1,14 @@
-
-    class Geometry {
-        func calculateArea(radius: float): float {
-            var pi: float = 3.14159;
-            return pi * radius * radius;
+class Program {
+            func @main():int {
+                var x: int = 5;
+                var y: int = 10;
+                if x < y {
+                    x := x * 2;
+                }
+                else {
+                    x := x / 2;
+                }
+                return x;
+            }
         }
-        
-        func calculatePerimeter(side: float): float {
-            return 4 * side;
-        }
-        
-        func calculateVolume(length: float, width: float, height: float): float {
-            return length * width * height;
-        }
-    }
         

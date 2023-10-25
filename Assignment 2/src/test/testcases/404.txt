@@ -1,7 +1,7 @@
 class Program {
-            var x: int;
             func @main():int {
-                x := 0;
+                var x: int;
+                x := foo(); 
                 return x;
             }
         }

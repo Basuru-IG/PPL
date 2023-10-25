@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],IntType,Block([Return(IntLit(1))]))])])
+Program([ClassDecl(Id(O),[AttributeDecl(VarDecl(Id(grades),ArrayType(5,FloatType))),MethodDecl(Id(@calculateGradeAverage),[],FloatType,Block([VarDecl(Id(total),FloatType,FloatLit(0.0)),For(AssignStmt(Id(i),IntLit(0)),BinaryOp(<,Id(i),IntLit(5)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([AssignStmt(Id(total),BinaryOp(+,Id(total),ArrayCell(Id(grades),Id(i))))])]),Return(BinaryOp(/,Id(total),FloatLit(5.0)))]))])])

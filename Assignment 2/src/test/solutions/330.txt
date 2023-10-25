@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([Block([Block([])]),Block([Block([Block([])])])]))])])
+Program([ClassDecl(Id(K),[MethodDecl(Id(@main),[],VoidType,Block([VarDecl(Id(x),IntType,IntLit(1)),VarDecl(Id(y),IntType,IntLit(2)),VarDecl(Id(z),IntType,IntLit(3)),VarDecl(Id(sum),IntType,BinaryOp(+,BinaryOp(+,Id(x),Id(y)),Id(z))),If(BinaryOp(>=,Id(sum),IntLit(5)),Block([Call(Id(io),Id(@writeString),[StringLit(Sum is greater than or equal to 5)])]),Block([Call(Id(io),Id(@writeString),[StringLit(Sum is less than 5)])]))]))])])

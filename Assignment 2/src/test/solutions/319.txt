@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([VarDecl(Id(radius),FloatType),AssignStmt(Id(radius),FloatLit(3.6))]))])])
+Program([ClassDecl(Id(ComplexExpressions),[MethodDecl(Id(complexMethod),[],IntType,Block([Return(BinaryOp(%,BinaryOp(/,BinaryOp(*,BinaryOp(+,IntLit(1),IntLit(2)),BinaryOp(-,IntLit(3),IntLit(4))),BinaryOp(+,IntLit(5),IntLit(6))),IntLit(7)))])),MethodDecl(Id(callComplex),[],VoidType,Block([VarDecl(Id(result),IntType),AssignStmt(Id(result),CallExpr(Self(),Id(complexMethod),[])),Call(Id(io),Id(@writeInt),[Id(result)])]))])])

@@ -1,17 +1,10 @@
-
-    class Expressions {
-        var x: int = 5;
-        var y: float = 3.14;
-        
-        func calculate(a, b: int): void {
-            x := a + b;
-            y := x / 2;
-            if x >= 10 {
-                x := x + 5;
-            }
-            else {
-                x := x - 5;
+class Program {
+            func @fnc():int {
+                var delta: [10]delta;
+                for i := 0; i < 10; i := i + 1 {
+                    io.@writeStr(i);
+                }
+                return arr[5];
             }
         }
-    }
         

@@ -1,17 +1,11 @@
-
-    class ArrayManipulation {
-        var arr: [5]int;
-        
-        func initializeArray(): void {
-            for i := 0; i < 5; i := i + 1 {
-                arr[i] := i * 2;
+class Program {
+            /* This is a block comment */
+            func @main():int {
+                // This is a line comment
+                var x: int;
+                if x < 10 {
+                    x := x + 1;
+                }
+                return x;
             }
         }
-        
-        func printArray(): void {
-            for i := 0; i < 5; i := i + 1 {
-                io.@writeInt(arr[i]);
-            }
-        }
-    }
-        

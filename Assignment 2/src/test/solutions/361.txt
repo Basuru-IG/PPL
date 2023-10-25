@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([For(AssignStmt(Id(i),IntLit(0)),BinaryOp(<,Id(i),IntLit(10)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([If(BinaryOp(==,BinaryOp(%,Id(i),IntLit(2)),IntLit(0)),Block([Continue]),Block([Break]))])])]))])])
+Program([ClassDecl(Id(Retangle),Id(Shape),[MethodDecl(Id(constructor),[],VoidType,Block([Return(BinaryOp(*,FieldAccess(Self(),Id(length)),FieldAccess(Self(),Id(width))))]))])])

@@ -1,22 +1,10 @@
-
-    class Color {
-        const RED: int = 1;
-        const GREEN: int = 2;
-        const BLUE: int = 3;
-        
-        func getColorName(color: int): string {
-            if color == RED {
-                return "Red";
-            } 
-            
-            if color == GREEN {
-                return "Green";
+class Program {
+            func @main():int {
+                var arr: [10]int;
+                for i := 0; i < 10; i := i + 1 {
+                    io.@writeInt(i);
+                }
+                return arr[5];
             }
-            
-            if color == BLUE {
-                return "Blue";
-            }
-            return "Unknown";
         }
-    }
         

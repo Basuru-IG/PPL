@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(A),[])])
+Program([ClassDecl(Id(Loop),[MethodDecl(Id(@main),[],VoidType,Block([VarDecl(Id(total),IntType),For(AssignStmt(Id(i),IntLit(1)),BinaryOp(<=,Id(i),IntLit(5)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([AssignStmt(Id(total),BinaryOp(+,Id(total),Id(i))),If(BinaryOp(==,Id(i),IntLit(3)),Block([Break]))])]),Call(Id(io),Id(@writeInt),[Id(total)])]))])])

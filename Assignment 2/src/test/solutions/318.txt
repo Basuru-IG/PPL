@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([VarDecl(Id(x),IntType),VarDecl(Id(y),IntType,IntLit(1)),ConstDecl(Id(z),IntType,IntLit(1))]))])])
+Program([ClassDecl(Id(Q),[AttributeDecl(VarDecl(Id(numbers),ArrayType(10,IntType))),MethodDecl(Id(@findSmallest),[],IntType,Block([VarDecl(Id(min),IntType),VarDecl(Id(b),IntType),Return(Id(min))]))])])

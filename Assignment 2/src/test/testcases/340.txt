@@ -1,11 +1,11 @@
-
-class A {
-    const @v: int = 1;
-    
-    var v: int;
-    
-    func constructor() {
-        self.v := @v;
-    }
-}
-        
+class Program {
+            /* This is a block comment */
+            func @main():int {
+                // This is a line comment
+                var x: int;
+                if x < 10 {
+                    x := x + 1;
+                }
+                return x;
+            }
+        }

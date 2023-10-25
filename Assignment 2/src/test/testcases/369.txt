@@ -1,16 +1,4 @@
-
-class X {
-    var b: [3]int = [0, 1, 2];
-    
-    func m(): [4]int {
-        return [1, 2, 3, 4];
-    }
-}
-
-class Program {
-    func @main(): void {
-        var x: X = new X();
-        x.b[2] := x.m()[3];
-    }
-}
-        
+class A{
+            /* This is a block comment so // has no meaning here */
+            //This is a line comment so /* has no meaning here
+            }

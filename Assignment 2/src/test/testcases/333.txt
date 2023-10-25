@@ -1,5 +1,11 @@
-
-class A <- B {
-    func foo(): void {}
-}
-        
+class H {
+            var isValid: bool = true;
+            func @toggleFlag(): void {
+                if isValid {
+                    isValid := false;
+                }
+                else {
+                    isValid := true;
+                }
+            }
+        }

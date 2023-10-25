@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(B),Id(A),[MethodDecl(Id(foo),[Param(Id(a),StringType),Param(Id(b),StringType),Param(Id(c),IntType),Param(Id(d),BoolType),Param(Id(e),BoolType),Param(Id(f),BoolType)],VoidType,Block([]))])])
+Program([ClassDecl(Id(G),[MethodDecl(Id(@main),[],VoidType,Block([VarDecl(Id(sum),IntType,IntLit(0)),For(AssignStmt(Id(i),IntLit(1)),BinaryOp(<=,Id(i),IntLit(100)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([AssignStmt(Id(sum),BinaryOp(+,Id(sum),Id(i)))])]),Call(Id(io),Id(@writeInt),[Id(sum)])]))])])

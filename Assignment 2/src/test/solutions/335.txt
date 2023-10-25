@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(A),[AttributeDecl(VarDecl(Id(a),BoolType,BooleanLit(True))),AttributeDecl(VarDecl(Id(b),BoolType,BooleanLit(False))),AttributeDecl(VarDecl(Id(c),BoolType,BooleanLit(True))),AttributeDecl(ConstDecl(Id(@d),FloatType,FloatLit(1.1))),AttributeDecl(ConstDecl(Id(@e),FloatType,FloatLit(2.2))),AttributeDecl(ConstDecl(Id(@f),FloatType,FloatLit(3.3)))])])
+Program([ClassDecl(Id(F),[AttributeDecl(VarDecl(Id(counter),IntType)),MethodDecl(Id(@countToTen),[],VoidType,Block([AssignStmt(Id(counter),IntLit(1))]))])])

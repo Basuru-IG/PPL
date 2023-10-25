@@ -1,9 +1,4 @@
-
-class X {
-    func foo(): void {
-        self.aPI := 3.14;
-        value := x.foo(5);
-        l[3] := value * 2;   
-    }
-}
-        
+class A{
+            /* This is a block comment so // has no meaning here */
+            //This is a line comment so /* has no meaning here
+            }

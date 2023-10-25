@@ -1,22 +1,13 @@
-
-    class Drawing {
-        const CANVAS_WIDTH: int = 800;
-        const CANVAS_HEIGHT: int = 600;
+class Program {
+            func @main():int {
+                var x: int = 5;
+                var y: int = 10;
+                if x < y {
+                    return x;
+                }
+                else {
+                    return y;
+                }
+            }
+        }
         
-        func drawRectangle(x: float, y: float, width: float, height: float): void {
-            // Drawing a rectangle
-        }
-
-        func drawCircle(x: float, y: float, radius: float): void {
-            // Drawing a circle
-        }
-
-        func drawText(x: float, y: float, text: string): void {
-            // Drawing text
-        }
-
-        func clearCanvas(): void {
-            // Clearing the canvas
-        }
-    }
-    

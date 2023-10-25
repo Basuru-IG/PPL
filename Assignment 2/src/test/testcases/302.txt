@@ -1,6 +1,4 @@
-
-class A {
-    var x: int;
-    var y, z: int;
-}
-        
+class main {
+            var a:int;
+            var b:int;
+        }

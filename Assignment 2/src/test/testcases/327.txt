@@ -1,13 +1,8 @@
-
-class X {
-    var @count: int = 0;
-    
-    func @getCount(): int {
-        return @count;
-    }
-    
-    func foo(): void {
-        io.@writeInt(@getCount());
-    }
-}
-        
+class Q {
+            var numbers: [10]int;
+            func @findSmallest(): int {
+                var min,b: int ;
+                
+                return min;
+            }
+        }

@@ -1,9 +1,15 @@
-
-class B {
-    const @count: int = 0;
-}
-
-class A {
-    const @_, @__, @___: int = (1 + 2) * 3, 4 / 5 * 2, B.@count;
-}
-        
+class Loop {
+            func @main(): void {
+                var result: int;
+                for i := 1; i <= 5; i := i + 1 {
+                    if i % 2 == 0 {
+                        result := i * 2;
+                        io.@writeInt(result);
+                    }
+                    else {
+                        result := i * 3;
+                        io.@writeInt(result);
+                    }
+                }
+            }
+        }

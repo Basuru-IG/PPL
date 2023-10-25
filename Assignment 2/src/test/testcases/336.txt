@@ -1,6 +1,6 @@
-
-class A {
-    func constructor(x: int) {}
-    func constructor(y: int) {}
-}
-        
+class E {
+            const PI: float = 3.14159265359;
+            func @calculateArea(radius: float): float {
+                return PI * radius * radius;
+            }
+        }

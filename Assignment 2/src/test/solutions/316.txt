@@ -1,1 +1,1 @@
-Program([])
+Program([ClassDecl(Id(R),[MethodDecl(Id(@main),[],VoidType,Block([VarDecl(Id(x),IntType,IntLit(5)),VarDecl(Id(y),IntType,IntLit(10)),If(BinaryOp(<,Id(x),Id(y)),Block([Call(Id(io),Id(@writeString),[StringLit(x is less than y)])]),Block([Call(Id(io),Id(@writeString),[StringLit(x is greater than or equal to y)])]))]))])])

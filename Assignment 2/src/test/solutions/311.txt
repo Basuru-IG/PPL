@@ -1,0 +1,1 @@
+Program([ClassDecl(Id(main),[AttributeDecl(VarDecl(Id(a),ArrayType(2,FloatType),[FloatLit(1.2),FloatLit(1.0)]))])])

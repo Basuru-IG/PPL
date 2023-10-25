@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[AttributeDecl(VarDecl(Id(count),IntType,IntLit(0))),MethodDecl(Id(foo),[],VoidType,Block([AssignStmt(FieldAccess(Self(),Id(count)),BinaryOp(+,FieldAccess(Self(),Id(count)),IntLit(1)))]))])])
+Program([ClassDecl(Id(R),[MethodDecl(Id(@main),[],VoidType,Block([VarDecl(Id(x),IntType,IntLit(5)),VarDecl(Id(y),IntType,IntLit(10)),If(BinaryOp(<,Id(x),Id(y)),Block([Call(Id(io),Id(@writeString),[StringLit(x is less than y)])]),Block([Call(Id(io),Id(@writeString),[StringLit(x is greater than or equal to y)])]))]))])])

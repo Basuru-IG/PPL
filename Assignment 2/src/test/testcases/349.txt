@@ -1,32 +1,34 @@
 
-class Rank {
-    var value: string;
-    
-    func constructor(value: string) {
-    }
-}
+            class HNode {
+                var value: int;
+                var pnext: HNode;
+                
+                func constructor(value: int, pnext: HNode) {
+                    self.value := value;
+                    self.pnext := pnext;
+                }
+            }
 
-class ProgrammingLanguage {
-    var value: string;
-    
-    func constructor(value: string) {}
-}
-
-class Programmer {
-    var language: ProgrammingLanguage;
-    var rank: Rank;
-    
-    func constructor(language: ProgrammingLanguage, rank: Rank) {
-        self.language := language;
-        self.rank := rank;
-    }
-    
-    func execute(test: string): void {}
-}
-
-class Program {
-    func @main(): void {
-        var programmer: Programmer = new Programmer(new Rank("junior"), new ProgrammingLanguage("Python"));
-    }
-}
-        
+            class HLList {
+                var head: HNode;
+                func constructor(head: HNode) {
+                    self.head := head;
+                }
+                func addNode(value: int): void {
+                    var newHNode: HNode = new HNode(value, self.head);
+                    self.head := newHNode;
+                }
+                func search(value: int): bool {
+                    for pcurrent := self.head; pcurrent != null; pcurrent := pcurrent.pnext {
+                        if pcurrent.value == value {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+                func printlist(): void {
+                    for pcurrent := self.head; pcurrent != null; pcurrent := pcurrent.pnext {
+                        io.@writeInt(pcurrent.value);
+                    }
+                }
+            }

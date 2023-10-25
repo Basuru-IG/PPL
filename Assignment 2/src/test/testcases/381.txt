@@ -1,16 +1,8 @@
-
-    class Shapes {
-        func areaOfCircle(radius: float): float {
-            var pi: float = 3.14159;
-            return pi * radius * radius;
+class Program {
+            func @main():int {
+                var x: int = 5;
+                var y: int = 10;
+                return x;
+            }
         }
-        
-        func areaOfRectangle(length: float, width: float): float {
-            return length * width;
-        }
-        
-        func volumeOfCylinder(radius: float, height: float): float {
-            return self.areaOfCircle(radius) * height;
-        }
-    }
         

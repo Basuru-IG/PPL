@@ -1124,22 +1124,18 @@ io.@writeInt(i);
         expect = "successful"
         self.assertTrue(TestParser.test(input, expect, 300))
 
-    def test_advanced_program_320(self):
-        input ="""
-    class ComplexExpressions {
-        func complexMethod(): int {
-            return (1 + 2) * (3 - 4) / (5 + 6) % 7;
+    def test_advanced_program_301(self):
+        input ="""class Program {
+            func @main():int {
+                var x: int;
+                x := foo(); 
+                return x;
+            }
         }
-        
-        func callComplex(): void {
-            var result: int;
-            result := self.complexMethod();
-            io.@writeInt(result);
-        }
-    }
         """
         expect = "successful"
-        self.assertTrue(TestParser.test(input, expect, 405))
+        self.assertTrue(TestParser.test(input, expect, 404))
+
 
 
 

@@ -1,5 +1,1 @@
-
-class X {
-    var a, b, c: int = 1, 2, 3;
-}
-        
+class main{ func a(): void {}}

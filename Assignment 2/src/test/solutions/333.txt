@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(B),Id(A),[MethodDecl(Id(foo),[],VoidType,Block([]))])])
+Program([ClassDecl(Id(H),[AttributeDecl(VarDecl(Id(isValid),BoolType,BooleanLit(True))),MethodDecl(Id(@toggleFlag),[],VoidType,Block([If(Id(isValid),Block([AssignStmt(Id(isValid),BooleanLit(False))]),Block([AssignStmt(Id(isValid),BooleanLit(True))]))]))])])

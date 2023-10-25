@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(A),[AttributeDecl(VarDecl(Id(@a),StringType,StringLit(Li))),AttributeDecl(VarDecl(Id(@b),StringType,StringLit(Quang))),AttributeDecl(VarDecl(Id(@c),StringType,StringLit(Tien)))])])
+Program([ClassDecl(Id(Program),[MethodDecl(Id(@fnc),[],IntType,Block([VarDecl(Id(delta),ArrayType(10,ClassType(Id(delta)))),For(AssignStmt(Id(i),IntLit(0)),BinaryOp(<,Id(i),IntLit(10)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([Call(Id(io),Id(@writeStr),[Id(i)])])]),Return(ArrayCell(Id(arr),IntLit(5)))]))])])

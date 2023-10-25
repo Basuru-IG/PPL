@@ -1,6 +1,7 @@
-
-class A {
-    var _, __, ___, ____: bool = true && false, false || false || true, true && true && false, false && false && true;
-    
-}
-        
+class Program {
+            var x: int;
+            func @fact(n: int):int {
+                if n == 0 {return 1;}
+                else {return n * @fact(n - 1);}
+            }
+        }

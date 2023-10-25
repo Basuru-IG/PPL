@@ -1,9 +1,4 @@
-
-class main{
-func foo  (a: int, b: float):void {}
-
-func @main():void {
-        io.printInt(4);
-    }
-}
-        
+class main {
+            var  a, b, c: int = 3, 4, 6;
+            var b:int;
+        }

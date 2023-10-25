@@ -1,6 +1,8 @@
-
-class A {}
-class B {}
-class C {}
-class Program {}
-        
+class Q {
+            var numbers: [10]int;
+            func @findSmallest(): int {
+                var min,b: int ;
+                
+                return min;
+            }
+        }

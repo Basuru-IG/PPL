@@ -1,35 +1,15 @@
 
-class Const {
-    const @a: int = 0;
-    const @b: int = 1;
-    
-}
-class A {
-    var a: [3]int = [1, 2, 3];
-    
-    func foo(): int {
-        return 1;
+    class Ass   {
+        var x: int;
+        
+        func cal(a: int, b: int): void {
+            x := a + b;
+            y := x * a;
+            self.printR();
+        }
+        
+        func printR(): void {
+            io.@writeInt(x);
+        }
     }
-    
-    func bar(x: int): int {
-        return x;
-    }
-}
-
-class B {
-    var a: A = new A();
-    
-    func foo(): int {
-        return 0;
-    }
-}
-
-class Program {
-    const @c: int = 2;
-    
-    func @main(): void {
-        var b: B = new B();
-        b.a.a[@c - b.foo() + b.a.foo() - b.a.a[b.foo() + b.a.a[b.a.foo()]]] := b.foo();
-    }
-}
         

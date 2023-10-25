@@ -1,9 +1,7 @@
-
-    class ComplexExpressions {
-        var a, b: int;
-        
-        func calculate(c: int, d: int): int {
-            return (a + b) * (c - d) + c / (d + 1);
+class Loop {
+            func @main(): void {
+                for j := 10; j > 0; j := j - 1 {
+                    io.@writeInt(j);
+                }
+            }
         }
-    }
-        

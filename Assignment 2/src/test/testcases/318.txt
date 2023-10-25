@@ -1,9 +1,8 @@
-
-class X {
-    func foo(): void {
-        var x: int;
-        var y: int = 1;
-        const z: int = 1;
-    }
-}
-        
+class Q {
+            var numbers: [10]int;
+            func @findSmallest(): int {
+                var min,b: int ;
+                
+                return min;
+            }
+        }

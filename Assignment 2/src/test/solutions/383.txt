@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(Complex),[MethodDecl(Id(complexExpression),[Param(Id(a),IntType),Param(Id(b),IntType),Param(Id(c),IntType),Param(Id(d),IntType),Param(Id(e),IntType)],IntType,Block([VarDecl(Id(x),IntType,BinaryOp(/,BinaryOp(*,BinaryOp(+,Id(a),Id(b)),BinaryOp(-,Id(c),Id(d))),BinaryOp(+,Id(e),IntLit(1)))),If(BinaryOp(>,Id(x),IntLit(100)),Block([Return(BinaryOp(+,Id(a),Id(b)))]),Block([Return(BinaryOp(-,Id(a),Id(b)))]))]))])])
+Program([ClassDecl(Id(Test),[AttributeDecl(VarDecl(Id(x),IntType,BinaryOp(&&,BinaryOp(+,BinaryOp(*,IntLit(5),IntLit(3)),IntLit(2)),IntLit(3))))])])

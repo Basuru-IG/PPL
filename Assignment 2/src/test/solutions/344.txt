@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(A),[AttributeDecl(VarDecl(Id(@a),StringType,BinaryOp(^,BinaryOp(^,StringLit(Li),StringLit(Quang)),StringLit(Tien))))])])
+Program([ClassDecl(Id(Test),[AttributeDecl(VarDecl(Id(x),IntType,BinaryOp(+,BinaryOp(*,IntLit(5),IntLit(3)),BinaryOp(*,IntLit(2),UnaryOp(!,BooleanLit(True))))))])])

@@ -1,3 +1,10 @@
-
-class main {}
-        
+class Test {
+        var a, b: int = 1, 2;
+        func @main():arr {
+            if a > b {
+                a := a * 2;
+            } else {
+                b := b + 1;
+            }
+        }
+        }

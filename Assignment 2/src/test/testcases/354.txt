@@ -1,20 +1,6 @@
-
-class X {
-    func getValue(i: int): int {
-        return i * 3;
-    }
-    
-    func cond(i: int): int {
-        if i % 9 == 0 {
-            return true;
-        } else {
-            return false;
+class Program {
+            func @main():int {
+                return 0;
+            }
         }
-    }
-    
-    func foo(): void {
-        for i := 0; self.cond(i); i := i + self.getValue(i) {
-        }
-    }
-}
         

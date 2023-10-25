@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(Program),[MethodDecl(Id(@main),[],VoidType,Block([Call(Id(io),Id(@writeInt),[CallExpr(Id(io),Id(@readInt),[])])]))])])
+Program([ClassDecl(Id(Ss),[MethodDecl(Id(@fact),[Param(Id(n),IntType)],IntType,Block([If(BinaryOp(==,Id(n),[FloatLit(3.0),IntLit(3),FloatLit(1.23)]),Block([Return(IntLit(1))]),Block([Return(BinaryOp(*,Id(n),CallExpr(Id(@fact),[BinaryOp(-,Id(n),IntLit(1))])))]))]))])])

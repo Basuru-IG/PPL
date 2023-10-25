@@ -1,19 +1,7 @@
-
-    class LoopAndConditions {
-        var x: int;
-        
-        func loopWithConditions(n: int): void {
-            for i := 1; i <= n; i := i + 1 {
-                if i % 2 == 0 {
-                    if i > 5 {
-                        io.@writeString("Even and greater than 5");
-                    } else {
-                        io.@writeString("Even but not greater than 5");
-                    }
-                } else {
-                    io.@writeString("Odd");
+class Loop {
+            func @main(): void {
+                for i := 0; i < 5; i := i + 1 {
+                    io.@writeInt(i);
                 }
             }
         }
-    }
-        

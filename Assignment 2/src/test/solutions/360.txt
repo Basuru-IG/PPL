@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([If(Block([Block([Block([])]),Block([]),Block([Block([])])]),BooleanLit(True),Block([Block([Block([])]),Block([If(BooleanLit(True),Block([]),Block([]))]),Block([Block([])])]),Block([Block([Block([])]),Block([]),Block([Block([])])]))]))])])
+Program([ClassDecl(Id(ar5),[AttributeDecl(VarDecl(Id(a),ArrayType(10,BoolType)))])])

@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(A),[AttributeDecl(ConstDecl(Id(@v),IntType,IntLit(1))),AttributeDecl(VarDecl(Id(v),IntType)),MethodDecl(Id(constructor),[],VoidType,Block([AssignStmt(FieldAccess(Self(),Id(v)),FieldAccess(Id(@v)))]))])])
+Program([ClassDecl(Id(Program),[MethodDecl(Id(@main),[],IntType,Block([VarDecl(Id(x),IntType),If(BinaryOp(<,Id(x),IntLit(10)),Block([AssignStmt(Id(x),BinaryOp(+,Id(x),IntLit(1)))])),Return(Id(x))]))])])

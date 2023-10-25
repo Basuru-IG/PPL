@@ -1,19 +1,9 @@
-
-class X {
-    func foo(): void {
-        for i := 0; i < 10; i := i + 1 {
-            for j := 0; j < 10; j := j + 1 {
-                for z := 0; z < 10; z := z + 1 {
-                }  
-            }  
+class Program {
+            func @main():int {
+                var arr: [10]int;
+                for i := 0; i < 10; i := i + 1 {
+                }
+                return arr[5];
+            }
         }
-        
-        for i := 0; i < 10; i := i + 1 {
-            for j := 0; j < 10; j := j + 1 {
-                for z := 0; z < 10; z := z + 1 {
-                }  
-            }  
-        }
-    }
-}
         

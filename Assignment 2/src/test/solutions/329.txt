@@ -1,1 +1,1 @@
-Program([ClassDecl(Id(X),[MethodDecl(Id(foo),[],VoidType,Block([Block([]),Block([])]))])])
+Program([ClassDecl(Id(L),[AttributeDecl(VarDecl(Id(n),IntType)),MethodDecl(Id(@isPrime),[],BoolType,Block([If(BinaryOp(<=,Id(n),IntLit(1)),Block([Return(BooleanLit(False))])),For(AssignStmt(Id(i),IntLit(2)),BinaryOp(<,Id(i),Id(n)),AssignStmt(Id(i),BinaryOp(+,Id(i),IntLit(1))),Block([If(BinaryOp(==,BinaryOp(%,Id(n),Id(i)),IntLit(0)),Block([Return(BooleanLit(False))]))])]),Return(BooleanLit(True))]))])])
